@@ -1,0 +1,7 @@
+{
+  "total_abstained_questions": 19,
+  "successful_requeries": 19,
+  "failed_requeries": 0,
+  "output_json": "experiments/abstained_chunk_analysis/abstained_questions_with_chunks.json",
+  "output_readable_txt": "experiments/abstained_chunk_analysis/abstained_questions_with_chunks_readable.txt"
+}

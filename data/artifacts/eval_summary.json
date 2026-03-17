@@ -1,0 +1,20 @@
+{
+  "total_questions": 55,
+  "top1_sentence_match_count": 40,
+  "top1_sentence_match_rate": 0.7273,
+  "topk_sentence_match_count": 44,
+  "topk_sentence_match_rate": 0.8,
+  "candidate_sentence_match_count": 38,
+  "candidate_sentence_match_rate": 0.6909,
+  "short_answer_sentence_match_count": 35,
+  "short_answer_sentence_match_rate": 0.6364,
+  "success_count": 44,
+  "success_rate": 0.8,
+  "success_definition": "candidate_sentence_match OR topk_sentence_match",
+  "sentence_match_rule": "same sentence, token overlap >= 0.6 and at least 2 matched tokens",
+  "retrieval_pipeline": "dense + lexical + hybrid merge + reranker",
+  "embedding_model": "Snowflake/snowflake-arctic-embed-s",
+  "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "collection_name": "dr_voss_chunks",
+  "top_k": 3
+}

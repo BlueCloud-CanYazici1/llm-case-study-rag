@@ -1,0 +1,5 @@
+{
+  "candidate_match_threshold": 0.7411,
+  "short_answer_match_threshold": 0.7143,
+  "notes": "Thresholds derived from the 25th percentile of successful evaluation examples."
+}
