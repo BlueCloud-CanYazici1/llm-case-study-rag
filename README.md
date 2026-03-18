@@ -1,5 +1,5 @@
 
-Dr. Voss Diary Retrieval-Augmented Generation System
+# Dr. Voss Diary Retrieval-Augmented Generation System
 
 This project implements a retrieval-first Retrieval-Augmented Generation (RAG) system over the Dr. Voss Diary document.
 
@@ -11,7 +11,7 @@ The LLM is not used for knowledge discovery, but strictly for controlled answer 
 
 ⸻
 
-Key Features
+# Key Features
 
 The system is designed to maximize answer accuracy and minimize hallucinations through:
 	•	diary-aware semantic chunking
@@ -25,7 +25,7 @@ The system is designed to maximize answer accuracy and minimize hallucinations t
 
 ⸻
 
-Quick Start
+# Quick Start
 
 pip install -r requirements.txt
 PYTHONPATH=. python scripts/prepare_data.py
@@ -38,7 +38,7 @@ http://127.0.0.1:8000/docs
 
 ⸻
 
-Design Goals
+# Design Goals
 	•	improve retrieval accuracy beyond simple vector search
 	•	ensure answers remain grounded in the source document
 	•	minimize hallucinated responses
@@ -47,7 +47,7 @@ Design Goals
 
 ⸻
 
-Core Design Principle
+# Core Design Principle
 
 Retrieval quality determines answer quality.
 
@@ -57,7 +57,7 @@ This reduces hallucination risk and ensures answers remain traceable to the docu
 
 ⸻
 
-System Architecture
+# System Architecture
 
 Offline Indexing
 
@@ -79,7 +79,7 @@ Question
 
 ⸻
 
-Query Pipeline (Detailed)
+# Query Pipeline (Detailed)
 	1.	Query embedding (Snowflake Arctic)
 	2.	Dense retrieval (Milvus vector search)
 	3.	Lexical retrieval (token overlap)
@@ -92,7 +92,7 @@ Query Pipeline (Detailed)
 
 ⸻
 
-Document Processing
+# Document Processing
 
 Source:
 
@@ -101,7 +101,7 @@ data/dr_voss_diary.pdf
 
 ⸻
 
-Chunking Strategy
+# Chunking Strategy
 
 The diary is written as daily chronological entries.
 
@@ -122,14 +122,14 @@ Final choice:
 
 ⸻
 
-Embedding Model
+# Embedding Model
 
 Snowflake/snowflake-arctic-embed-s
 
 
 ⸻
 
-Vector Storage
+# Vector Storage
 
 Milvus
 
@@ -137,7 +137,7 @@ Provides efficient similarity search over embeddings.
 
 ⸻
 
-Hybrid Retrieval
+# Hybrid Retrieval
 
 Why Hybrid?
 
@@ -155,7 +155,7 @@ Combining both:
 
 ⸻
 
-Cross-Encoder Reranking
+# Cross-Encoder Reranking
 
 Model:
 
@@ -168,7 +168,7 @@ Cross-encoders evaluate (query, chunk) pairs jointly and provide more accurate r
 
 ⸻
 
-LLM Answer Synthesis
+# LLM Answer Synthesis
 
 The LLM is used only for controlled rewriting.
 
@@ -180,7 +180,7 @@ Prompt constraints:
 
 ⸻
 
-Evidence Extraction
+# Evidence Extraction
 
 The system extracts the most relevant supporting sentence.
 
@@ -191,7 +191,7 @@ This ensures:
 
 ⸻
 
-Confidence & Abstention
+# Confidence & Abstention
 
 The system uses token-overlap scoring to decide whether to answer.
 
@@ -206,7 +206,7 @@ If below threshold:
 
 ⸻
 
-Threshold Selection (Important)
+# Threshold Selection (Important)
 
 Thresholds were not chosen arbitrarily.
 
@@ -228,14 +228,14 @@ Final system
 
 ⸻
 
-Evaluation Pipeline
+# Evaluation Pipeline
 
 PYTHONPATH=. python scripts/eval.py
 
 
 ⸻
 
-Evaluation Metric
+# Evaluation Metric
 	•	token overlap ≥ 0.6
 	•	minimum 2 tokens
 
@@ -243,7 +243,7 @@ Simple and reproducible, though not fully semantic.
 
 ⸻
 
-Final Results
+# Final Results
 
 Total Questions: 55
 Correct Answers: 53
@@ -257,19 +257,7 @@ Accuracy (excluding abstained):
 
 ⸻
 
-Error Analysis
-
-One failure occurred due to hallucination during LLM rewriting:
-	•	correct: hydroharmonic farming technology
-	•	generated: drones for precision farming
-
-Insight:
-
-Retrieval can be correct, but generation still needs control.
-
-⸻
-
-Engineering Trade-offs
+# Engineering Trade-offs
 	•	precision vs recall (hybrid retrieval)
 	•	latency vs accuracy (reranking cost)
 	•	abstain vs hallucinate risk
@@ -277,7 +265,7 @@ Engineering Trade-offs
 
 ⸻
 
-Limitations
+# Limitations
 	•	limited multi-chunk reasoning
 	•	depends on chunk quality
 	•	LLM rewriting may introduce minor hallucinations
@@ -285,7 +273,7 @@ Limitations
 
 ⸻
 
-Future Improvements
+# Future Improvements
 	•	semantic similarity metrics
 	•	multi-chunk reasoning
 	•	fully extractive QA
@@ -293,7 +281,7 @@ Future Improvements
 
 ⸻
 
-Final Note
+# Final Note
 
 This project demonstrates a retrieval-engineered RAG system focused on:
 	•	reliability
